@@ -8,12 +8,12 @@ const outlineSchema = new Schema({
 		type: String,
 		required: true
 	},
-	outlineId: {
-		type: String,
-		unique: true, 
-		default: () => MUUID.v1().toString(),	
-		required: true
-	},
+	// outlineId: {
+	// 	type: String,
+	// 	unique: true, 
+	// 	default: () => MUUID.v1().toString(),	
+	// 	required: true
+	// },
 	outline: [
 		{
 			name: {

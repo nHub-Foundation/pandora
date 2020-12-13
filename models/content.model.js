@@ -8,10 +8,10 @@ const contentSchema = new Schema({
 		type: String,
 		required: true
 	},
-	outlineId: {
-		type: String,
-		required: true
-	},
+	// outlineId: {
+	// 	type: String,
+	// 	required: true
+	// },
 	video: [
 		{
 			title: {

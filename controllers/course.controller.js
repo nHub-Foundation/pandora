@@ -18,24 +18,20 @@ exports.createNewCourse = (req, res, next) => {// Creates a new course, outline 
       outline: [...outline]
     })
     .save()
-    .then(({ outline, outlineId }) => {
-      // console.log("Outline--------->", outline);
+    .then(({ outline }) => {
       const id = outline[outline.length - 1]._id;
-      // console.log("Video--------->", video);
       const newOutlineVideos = video.map(content => ({ 
         outlineId: id,
         title: content.title,
         path: content.path
       }));
-      // console.log("New Outline Video----->", newOutlineVideos);
       new Content({
         courseId,
-        outlineId,
+        // outlineId,
         video: [...newOutlineVideos]
       })
       .save()
       .then(data => {
-        console.log("Content Data--------->", data)
         res.status(200).json('Course created.')
       })
       .catch(err => {
