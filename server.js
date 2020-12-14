@@ -13,7 +13,10 @@ app.use(bodyParser.json());
 app.use(courseRoute);
 app.use(authRoute);
 
-mongoose.connect('mongodb://127.0.0.1:27017/?compressors=zlib&readPreference=primary&gssapiServiceName=mongodb&appname=MongoDB%20Compass&ssl=false')
+mongoose.connect('mongodb://127.0.0.1:27017/?compressors=zlib&readPreference=primary&gssapiServiceName=mongodb&appname=MongoDB%20Compass&ssl=false', { 
+	// useNewUrlParser: true, 
+	// useUnifiedTopology: true 
+})
 	.then(data => {
 		app.listen(5000, () => console.log("Server running on PORT: 5000"));
 	})

@@ -25,7 +25,7 @@ const contentSchema = new Schema({
 			},
 			outlineId: {
 				type: String,
-				require: true
+				required: true
 			}
 		}
 	]

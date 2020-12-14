@@ -13,12 +13,16 @@ exports.createNewCourse = (req, res, next) => {// Creates a new course, outline 
   })
   .save()
   .then(({ courseId }) => {
-    new Outline({
+    // console.log(courseId)
+    // console.log(outline)
+
+    new Outline({ 
       courseId,
       outline: [...outline]
     })
     .save()
     .then(({ outline }) => {
+      console.log(outline);
       const id = outline[outline.length - 1]._id;
       const newOutlineVideos = video.map(content => ({ 
         outlineId: id,

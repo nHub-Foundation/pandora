@@ -8,12 +8,6 @@ const outlineSchema = new Schema({
 		type: String,
 		required: true
 	},
-	// outlineId: {
-	// 	type: String,
-	// 	unique: true, 
-	// 	default: () => MUUID.v1().toString(),	
-	// 	required: true
-	// },
 	outline: [
 		{
 			name: {
@@ -23,7 +17,7 @@ const outlineSchema = new Schema({
 			alias_name: {
 				type: "String",
 				required: true,
-				unique: true
+				// unique: true 
 			}
 		}
 	]
