@@ -13,9 +13,6 @@ exports.createNewCourse = (req, res, next) => {// Creates a new course, outline 
   })
   .save()
   .then(({ courseId }) => {
-    // console.log(courseId)
-    // console.log(outline)
-
     new Outline({ 
       courseId,
       outline: [...outline]
@@ -31,7 +28,6 @@ exports.createNewCourse = (req, res, next) => {// Creates a new course, outline 
       }));
       new Content({
         courseId,
-        // outlineId,
         video: [...newOutlineVideos]
       })
       .save()
@@ -68,23 +64,34 @@ exports.updateCourseOutlineAndContent = (req, res, next) => {
   Outline.findOne({ courseId: req.body.id })
     .then(product => {
       const createProduct = {...product._doc};
-      product.overwrite({
-        ...createProduct,
-        outline: [...createProduct.outline, req.body.outline]
-      });
-      return product.save();    
+      const findMatch = createProduct.outline.find((item) => item.alias_name === req.body.outline.alias_name);   
+      if (!findMatch) {
+        product.overwrite({
+          ...createProduct,
+          outline: [...createProduct.outline, req.body.outline]
+        });
+        return product.save();
+      }
+      return product;
     })
     .then(data => {
-      console.log(data);
-      Content.findOne({ outlineId: data.outlineId })
+      Content.findOne({ courseId: req.body.id })
         .then(content => {
-          const createContent = {...content};
-          content.overwrite({
-            ...createContent,
-            video: [...content.video, req.body.content]
-          });
-          console.log(content);
-          return content.save();
+          const id = data.outline[data.outline.length - 1]._id;
+          const newOutlineVideos = {
+            ...req.body.content,
+            outlineId: id
+          }
+          const findVideoMatch = content.video.find(item => item.title === newOutlineVideos.title);
+          if (!findVideoMatch) {
+            content.overwrite({
+              ...content,
+              courseId: content.courseId,
+              video: [...content.video, newOutlineVideos]
+            })
+            return content.save();
+          }
+          return content;
         })
         .then(data => res.status(200).json("Updated!"))
         .catch(err => {
@@ -93,118 +100,31 @@ exports.updateCourseOutlineAndContent = (req, res, next) => {
         })
     })
     .catch(err => {
-      console.log(err);
+      // console.log(err);
       res.status(400).json('Unable to update.');
+    })
+};
+
+exports.getCourseOutline = (req, res, next) => {
+  const id = req.params.id;
+  Outline.findOne({ courseId: id })
+    .then(data => {
+      console.log(data._doc);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(400).json('Unable to get course outline.');
     })
 }
 
-
-
-
-exports.getAllCourses = (req, res, next) => {
-  res.json(
-    [
-      {
-        title: "The complete web developer in 2020",
-        id: 0,
-        courseId: "ufdnkkkdddjdjddj",
-        photoUrl: "0.jpg",
-        description: "web developer course"
-      },
-      {
-        title: "Learning to learn",
-        id: 1,
-        courseId: "ufdnkkkdddjdjddjfff",
-        photoUrl: "1.jpg",
-        description: "learning to learn"
-      },
-      {
-        title: "CS50",
-        id: 2,
-        courseId: "ufdnkkkdddjdjdnndj",
-        photoUrl: "2.jpg",
-        description: "computer science 50"
-      }
-    ]
-  );
-}
-
 exports.getImage = (req, res, next) => {
-  res.sendFile(`assets/photos/${req.params.photoUrl}`, { root: "." });
-}
-
-exports.getAllCourseOutline = (req, res, next) => {
-  res.json(
-    {
-      id: [
-        {
-          name: "Introduction",
-          outlineId: "5fcf42f69620c575fffac5d1",
-          photoUrl: "0.jpg"
-        },
-        {
-          name: "How the internet works",
-          outlineId: "5fcf42f69620c575fffac5d2",
-          photoUrl: "0.jpg"
-        }
-      ]
-    }
-  );
-
-
-
-
-  // res.json(
-  //   [
-  //     {
-  //       id: 0,
-  //       name: "introduction",
-  //       photoUrl: "0.jpg"
-  //     },
-  //     {
-  //       id: 1, name: "how the internet works",
-  //       photoUrl: "0.jpg"
-  //     },
-  //     {
-  //       id: 2, name: "history of the web",
-  //       photoUrl: "0.jpg"
-  //     },
-  //     {
-  //       id: 3, name: "html 5",
-  //       photoUrl: "0.jpg"
-  //     },
-  //     {
-  //       id: 4, name: "advanced html 5",
-  //       photoUrl: "0.jpg"
-  //     }
-  //   ]
-  // );
-}
-
-
-exports.getCourseVideos = (req, res, next) => {
-  // This returns videos for specific course outline.
-  res.json([
-    {
-      id: 0,
-      name: "why this course",
-      duration: "4mins",
-      outline: "introduction",
-      url: "0.mp4"
-    },
-    {
-      id: 1,
-      name: "course outline",
-      duration: "3mins",
-      outline: "introduction",
-      url: "1.mp4"
-    },
-  ]);
+  res.sendFile(`assets/videos/${req.params.course_alias}/${req.params.id}`, { root: "." });
 }
 
 exports.getVideo = (req, res, next) => {
-  // console.log(req.params)
-  const path =  rootPath.join(__dirname, `../assets/videos/${req.params.outline}`, `${req.params.id}.mp4` );
+  console.log(req.body);
+  console.log(req.params);
+  const path =  rootPath.join(__dirname, `../assets/videos/${req.params.course_alias}/${req.params.outline_alias}`, `${req.params.id}.mp4` );
   console.log(path);
   const stat = fs.statSync(path);
   const fileSize = stat.size;

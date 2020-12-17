@@ -1,0 +1,10 @@
+[{
+  "_id": {
+    "$oid": "5fd9142563449013bd0f51c6"
+  },
+  "name": "The Web Developer in 2020",
+  "alias_name": "the_complete_web_developer",
+  "photoUrl": "1.jpg",
+  "courseId": "db2a18c7-d1ce-463f-af22-749a388e3589",
+  "__v": 0
+}]

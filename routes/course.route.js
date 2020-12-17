@@ -8,6 +8,9 @@ const router = express.Router();
 router.post('/create-course', courseController.createNewCourse);
 router.get('/courses', courseController.getAllCourses);
 router.put('/courses', courseController.updateCourseOutlineAndContent);
+router.get('/outline/:id', courseController.getCourseOutline);
+router.get('/image/:course_alias/:id', courseController.getImage);
+router.get('/video/:course_alias/:outline_alias/:id', courseController.getVideo);
 
 // router.get('/', courseController.getAllCourses);
 // router.get('/outline', courseController.getAllCourseOutline);

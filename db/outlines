@@ -1,0 +1,170 @@
+[{
+  "_id": {
+    "$oid": "5fd9142563449013bd0f51c7"
+  },
+  "courseId": "db2a18c7-d1ce-463f-af22-749a388e3589",
+  "outline": [
+    {
+      "_id": {
+        "$oid": "5fd9142563449013bd0f51c8"
+      },
+      "name": "Introduction",
+      "alias_name": "introduction"
+    },
+    {
+      "_id": {
+        "$oid": "5fd914e063449013bd0f51cc"
+      },
+      "name": "How the internet works",
+      "alias_name": "how_the_internet_works"
+    },
+    {
+      "_id": {
+        "$oid": "5fd9169a63449013bd0f51d4"
+      },
+      "name": "History of the web",
+      "alias_name": "history_of_the_web"
+    },
+    {
+      "_id": {
+        "$oid": "5fd9187f63449013bd0f51d9"
+      },
+      "name": "HTML 5",
+      "alias_name": "html_5"
+    },
+    {
+      "_id": {
+        "$oid": "5fd91a3e63449013bd0f51e2"
+      },
+      "name": "Advanced HTML 5",
+      "alias_name": "advanced_html_5"
+    },
+    {
+      "_id": {
+        "$oid": "5fd91be763449013bd0f51ea"
+      },
+      "name": "CSS",
+      "alias_name": "css"
+    },
+    {
+      "_id": {
+        "$oid": "5fd91d2263449013bd0f51f2"
+      },
+      "name": "Advanced CSS",
+      "alias_name": "advanced_css"
+    },
+    {
+      "_id": {
+        "$oid": "5fd91eb463449013bd0f51f8"
+      },
+      "name": "Bootstrap 4, Templates, And Building Your Startup Landing Page",
+      "alias_name": "bootstrap_4_templates_and_building_your_startup_landing_page"
+    },
+    {
+      "_id": {
+        "$oid": "5fd9205963449013bd0f5202"
+      },
+      "name": "CSS Grid + CSS Layout",
+      "alias_name": "css_grid_css_layout"
+    },
+    {
+      "_id": {
+        "$oid": "5fd923a863449013bd0f5214"
+      },
+      "name": "Career Of A Web Developer",
+      "alias_name": "career_of_a_web_developer"
+    },
+    {
+      "_id": {
+        "$oid": "5fd9244763449013bd0f5218"
+      },
+      "name": "JavaScript",
+      "alias_name": "javascript"
+    },
+    {
+      "_id": {
+        "$oid": "5fd9270063449013bd0f5227"
+      },
+      "name": "DOM Manipulation",
+      "alias_name": "dom_manipulation"
+    },
+    {
+      "_id": {
+        "$oid": "5fd927f563449013bd0f522e"
+      },
+      "name": "Advanced Javascript",
+      "alias_name": "advanced_javascript"
+    },
+    {
+      "_id": {
+        "$oid": "5fd9298963449013bd0f523b"
+      },
+      "name": "Command Line",
+      "alias_name": "command_line"
+    },
+    {
+      "_id": {
+        "$oid": "5fd929cf63449013bd0f523d"
+      },
+      "name": "Developer Environment",
+      "alias_name": "developer_environment"
+    },
+    {
+      "_id": {
+        "$oid": "5fd92a3a63449013bd0f5241"
+      },
+      "name": "Git + Github + Open Source Projects",
+      "alias_name": "git_github_open_source_projects"
+    },
+    {
+      "_id": {
+        "$oid": "5fd9308b63449013bd0f5246"
+      },
+      "name": "A Day In The Life Of A Developer",
+      "alias_name": "a_day_in_the_life_of_a_developer"
+    },
+    {
+      "_id": {
+        "$oid": "5fd930d263449013bd0f5248"
+      },
+      "name": "NPM + NPM Scripts",
+      "alias_name": "npm_npm_scripts"
+    },
+    {
+      "_id": {
+        "$oid": "5fd9317463449013bd0f524c"
+      },
+      "name": "React.js + Redux",
+      "alias_name": "reactjs_redux"
+    },
+    {
+      "_id": {
+        "$oid": "5fd9349763449013bd0f5264"
+      },
+      "name": "HTTPJSONAJAX + Asynchronous Javascript",
+      "alias_name": "httpjsonajax_asynchronous_javascript"
+    },
+    {
+      "_id": {
+        "$oid": "5fd9359963449013bd0f526c"
+      },
+      "name": "Backend Basics",
+      "alias_name": "backend_basics"
+    },
+    {
+      "_id": {
+        "$oid": "5fd935d963449013bd0f526e"
+      },
+      "name": "APIs",
+      "alias_name": "apis"
+    },
+    {
+      "_id": {
+        "$oid": "5fd9362d63449013bd0f5270"
+      },
+      "name": "Final Project SmartBrain Front-end",
+      "alias_name": "final_project_smartbrain_front_end"
+    }
+  ],
+  "__v": 22
+}]
