@@ -105,7 +105,7 @@ exports.updateCourseOutlineAndContent = (req, res, next) => {
     })
 };
 
-exports.getCourseOutline = (req, res, next) => {
+exports.getCourseOutline = (req, res, next) => { 
   const id = req.params.id;
   Outline.findOne({ courseId: id })
     .then(data => {
