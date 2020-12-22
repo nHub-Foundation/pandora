@@ -109,7 +109,9 @@ exports.getCourseOutline = (req, res, next) => {
   const id = req.params.id;
   Outline.findOne({ courseId: id })
     .then(data => {
-      console.log(data._doc);
+      if (data) {
+        res.status(200).json(data._doc);
+      }
     })
     .catch(err => {
       console.log(err);
@@ -121,10 +123,46 @@ exports.getImage = (req, res, next) => {
   res.sendFile(`assets/videos/${req.params.course_alias}/${req.params.id}`, { root: "." });
 }
 
+exports.getCourseVideos = (req, res, next) => {
+  const id =  req.params.id
+  Content.findOne({ courseId: id })
+    .then(data => {
+      if (data) {
+        res.status(200).json(data._doc);
+      }
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(400).json("Unable to get videos.");
+    })
+
+}
+
+
+// exports.getOutlineVideos = (req, res, next) => {
+//   const id =  req.params.id;
+//   const outlineId = req.params.outlineId;
+//   Content.findOne({ courseId: id })
+//     .then(data => {
+//       if (data) {
+//         const videos = [...data._doc.video];
+//         const dataVideos = videos.filter(item => item.outlineId === outlineId);
+//         return dataVideos;
+//         // res.status(200).json(videos);
+//       }
+//     })
+//     .then(console.log)
+//     .catch(err => {
+//       console.log(err);
+//       res.status(400).json("Unable to get videos.");
+//     })
+
+// }
+
 exports.getVideo = (req, res, next) => {
   console.log(req.body);
   console.log(req.params);
-  const path =  rootPath.join(__dirname, `../assets/videos/${req.params.course_alias}/${req.params.outline_alias}`, `${req.params.id}.mp4` );
+  const path =  rootPath.join(__dirname, `../assets/videos/${req.params.course_alias}/${req.params.outline_alias}`, `${req.params.id}` );
   console.log(path);
   const stat = fs.statSync(path);
   const fileSize = stat.size;
