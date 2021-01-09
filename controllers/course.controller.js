@@ -82,7 +82,7 @@ exports.updateCourseOutlineAndContent = (req, res, next) => {
             ...req.body.content,
             outlineId: id
           }
-          const findVideoMatch = content.video.find(item => item.title === newOutlineVideos.title);
+          const findVideoMatch = content.video ? content.video.find(item => item.title === newOutlineVideos.title) : null;
           if (!findVideoMatch) {
             content.overwrite({
               ...content,
